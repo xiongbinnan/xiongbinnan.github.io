@@ -5,17 +5,17 @@
   
 
   
-  <title>我的第一篇博客 | Hexo</title>
+  <title>热点抓取封装函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的大标题我熊大搭建静态博客了 心情我很难受写下代码，因为已经搞了好几个小时了 1print(&quot;Hello!My Blog&quot;)  结语作者：熊大">
+  <meta name="description" content="import requestsimport redef get_html(url):    headers &#x3D; {        “User-Agent”: “Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;81.0.4044.113 Safari&#x2F;537.36”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2020/02/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="热点抓取封装函数">
+<meta property="og:url" content="http://yoursite.com/2020/04/24/%E7%83%AD%E7%82%B9%E6%8A%93%E5%8F%96%E5%B0%81%E8%A3%85%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这是我的大标题我熊大搭建静态博客了 心情我很难受写下代码，因为已经搞了好几个小时了 1print(&quot;Hello!My Blog&quot;)  结语作者：熊大">
+<meta property="og:description" content="import requestsimport redef get_html(url):    headers &#x3D; {        “User-Agent”: “Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;81.0.4044.113 Safari&#x2F;537.36”">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-19T08:24:47.000Z">
-<meta property="article:modified_time" content="2020-02-19T08:32:32.581Z">
+<meta property="article:published_time" content="2020-04-24T11:00:21.000Z">
+<meta property="article:modified_time" content="2020-04-24T11:01:02.894Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-我的第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-热点抓取封装函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2020-02-19T08:24:47.000Z" itemprop="datePublished">2020-02-19</time>
+    <a href="/2020/04/24/%E7%83%AD%E7%82%B9%E6%8A%93%E5%8F%96%E5%B0%81%E8%A3%85%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-04-24T11:00:21.000Z" itemprop="datePublished">2020-04-24</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      热点抓取封装函数
     </h1>
   
 
@@ -88,16 +88,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="这是我的大标题"><a href="#这是我的大标题" class="headerlink" title="这是我的大标题"></a>这是我的大标题</h2><p>我熊大搭建静态博客了</p>
-<h2 id="心情"><a href="#心情" class="headerlink" title="心情"></a>心情</h2><p>我很难受写下代码，因为已经搞了好几个小时了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Hello!My Blog"</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>作者：熊大</p>
+        <p>import requests<br>import re<br>def get_html(url):<br>    headers = {<br>        “User-Agent”: “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36”<br>    }<br>    url = “<a href="http://top.baidu.com/buzz?b=341&amp;c=513&amp;fr=topbuzz_b1&quot;" target="_blank" rel="noopener">http://top.baidu.com/buzz?b=341&amp;c=513&amp;fr=topbuzz_b1&quot;</a><br>    response = requests.get(url, headers)<br>def ex_html(html):<br>    html = response.content.decode(“gb2312”)</p>
+<p>#print(html)</p>
+<pre><code>pattern = &apos;&lt;td\sclass=&quot;keyword&quot;&gt;\s+&lt;a.*?&gt;(.*?)&lt;/a&gt;&apos;</code></pre><p>def parser(result):<br>    result = re.findall(pattern, html)<br>    print(result)<br>#len(result)<br>#temp = 1<br>#for i in result:</p>
+<h1 id="print-f”-temp-、-i-”"><a href="#print-f”-temp-、-i-”" class="headerlink" title="print(f”{temp}、{i}”)"></a>print(f”{temp}、{i}”)</h1><h1 id="temp-1"><a href="#temp-1" class="headerlink" title="temp+=1"></a>temp+=1</h1><p>def run():<br>    for index,msg in enumerate(result,1):<br>        print(f”{index}、{msg}”)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ck9e3gksa00033ov66vm3ekx5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/%E7%83%AD%E7%82%B9%E6%8A%93%E5%8F%96%E5%B0%81%E8%A3%85%E5%87%BD%E6%95%B0/" data-id="ck9e3gksc00063ov69dkh37it" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,19 +105,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/02/19/%E9%9A%8F%E6%89%8B%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/24/%E7%88%AC%E5%8F%96%E5%BF%85%E5%BA%94%E5%A3%81%E7%BA%B8/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          随手记
+          爬取必应壁纸
         
       </div>
     </a>
   
   
-    <a href="/2020/02/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/24/%E7%9C%81%E4%BB%BD%E8%B6%85%E9%93%BE%E6%8E%A5/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">省份超链接</div>
     </a>
   
 </nav>
