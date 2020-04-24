@@ -5,17 +5,13 @@
   
 
   
-  <title>爬取必应壁纸 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 爬取必应壁纸date: 2020-04-24 19:03:17tags:—import requestsfrom lxml import etree class BingCrawler():    def init(self):        self.BASE_URL &#x3D; “https:&#x2F;&#x2F;bing.ioliu.cn&quot;        self.TOTAL_PAGE &#x3D;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="爬取必应壁纸">
-<meta property="og:url" content="http://yoursite.com/2020/04/24/%E7%88%AC%E5%8F%96%E5%BF%85%E5%BA%94%E5%A3%81%E7%BA%B8/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: 爬取必应壁纸date: 2020-04-24 19:03:17tags:—import requestsfrom lxml import etree class BingCrawler():    def init(self):        self.BASE_URL &#x3D; “https:&#x2F;&#x2F;bing.ioliu.cn&quot;        self.TOTAL_PAGE &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-24T11:03:17.694Z">
-<meta property="article:modified_time" content="2020-04-24T11:03:32.430Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +62,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-爬取必应壁纸" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/24/%E7%88%AC%E5%8F%96%E5%BF%85%E5%BA%94%E5%A3%81%E7%BA%B8/" class="article-date">
-  <time datetime="2020-04-24T11:03:17.694Z" itemprop="datePublished">2020-04-24</time>
+    <a href="/2020/02/15/hello-world/" class="article-date">
+  <time datetime="2020-02-15T11:20:21.045Z" itemprop="datePublished">2020-02-15</time>
 </a>
     
   </div>
@@ -79,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      爬取必应壁纸
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/hello-world/">Hello World</a>
     </h1>
   
 
@@ -88,61 +86,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 爬取必应壁纸<br>date: 2020-04-24 19:03:17<br>tags:<br>—import requests<br>from lxml import etree</p>
-<p>class BingCrawler():<br>    def <strong>init</strong>(self):<br>        self.BASE_URL = “<a href="https://bing.ioliu.cn&quot;" target="_blank" rel="noopener">https://bing.ioliu.cn&quot;</a><br>        self.TOTAL_PAGE = 1<br>        self.headers = {<br>            “user-agent”: “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36”<br>        }</p>
-<pre><code>def spider(self):
-    session = requests.Session()
-    for index in range(1 ,self.TOTAL_PAGE+1):
-        url = self.BASE_URL + f&quot;/?p={index}&quot;
-        response = session.get(url=url, headers=self.headers)
-        yield response.content.decode(&quot;utf8&quot;)</code></pre><p>@staticmethod<br>    def parser(html):<br>        selector = etree.HTML(html)<br>        url_list = selector.xpath(“//div[@class=’item’]//div[@class=’options’]/a[2]/@href”)<br>        return url_list</p>
-<pre><code>def save_picture(self, url_list):
-    session = requests.Session()
-    for url in url_list:
-        file_name = url.split(&quot;/&quot;)[2][:-15] + &quot;.jpg&quot;
-        picture_url =  self.BASE_URL + url
-        response = session.get(picture_url, headers=self.headers)
-        with open(file_name, &quot;wb&quot;) as file:
-            file.write(response.content)
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-def run(self):
-    html_gen = self.spider()
-    for html in html_gen:
-        url_list = self.parser(html)
-        self.save_picture(url_list)</code></pre><p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    bing_spider = BingCrawler()<br>    bing_spider.run()</p>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/%E7%88%AC%E5%8F%96%E5%BF%85%E5%BA%94%E5%A3%81%E7%BA%B8/" data-id="ck9e3qbs40007ikv6g9endb0r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/15/hello-world/" data-id="ck9e3qbs00002ikv6bf27a5og" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2020/04/24/%E5%BF%85%E5%BA%94%E7%BF%BB%E8%AF%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          必应翻译
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/04/24/%E7%83%AD%E7%82%B9%E6%8A%93%E5%8F%96%E5%B0%81%E8%A3%85%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">热点抓取封装函数</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
-</article>
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
